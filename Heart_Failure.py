@@ -46,5 +46,8 @@ def main():
     })
     predict(new_data)
 
+if __name__ == "__main__":
+    main()
+
     
 
