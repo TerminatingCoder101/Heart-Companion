@@ -4,7 +4,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 import pandas as pd
-from Heart_Failure import predict
+from Heart_Failure_Predict import *
 
 class HeartCompanion(App):
     def build(self):
@@ -56,6 +56,9 @@ class HeartCompanion(App):
         self.button = Button(text="Submit", on_press=self.submit_data)
         self.window.add_widget(self.button)
 
+        self.result = Label(text= "Result")
+        self.window.add_widget(self.result)
+
         return self.window
 
     def submit_data(self, instance):
@@ -77,7 +80,8 @@ class HeartCompanion(App):
                 'thalach': [max_heart_rate],
                 'dm': [db]
             })
-            predict(new_data)
+            new_result = predict(new_data)
+            self.result.text = "Thank you. " + new_result
         except ValueError:
             print("Please enter valid integers for all fields.")
 

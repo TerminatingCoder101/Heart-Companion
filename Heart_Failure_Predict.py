@@ -26,20 +26,4 @@ def predict(new_data):
     predictions = model.predict(new_data_scaled)
     for i, prediction in enumerate(predictions):
         result = 'You have a potential Heart Failure. Please seek medical help immediately.' if prediction == 1 else 'Yay. You have no potential for Heart Failure'
-        print(result)
-
-def main():
-    print("Enter: <Age> <Sex> <Smoke (1 = y, 0 = n)> <Cholesterol> <Resting BPS> <Max Heart Rate Achieved> <Diabetes (1 = y, 0 = n):")
-    new_data = pd.DataFrame({
-        'age': [float(input())],
-        'sex': [float(input())],
-        'smoke': [float(input())],
-        'chol': [float(input())],
-        'trestbps': [float(input())],
-        'thalach': [float(input())],
-        'dm': [float(input())]
-    })
-    predict(new_data)
-
-if __name__ == "__main__":
-    main()
+    return result
